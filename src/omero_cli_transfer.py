@@ -295,6 +295,9 @@ class TransferControl(GraphControl):
             help="Skip options to be passed to omero import"
         )
         unpack.add_argument(
+            "--encrypted", help="Use encrypted imports",
+            action="store_true")
+        unpack.add_argument(
             "--metadata",
             choices=['all', 'none', 'img_id', 'plate_id', 'timestamp',
                      'software', 'version', 'md5', 'hostname', 'db_id',
