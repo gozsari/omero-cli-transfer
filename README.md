@@ -104,6 +104,7 @@ effectively merging the "new" unpacked entities with existing ones.
 Examples:
 ```
 omero transfer unpack transfer_pack.zip
+omero transfer unpack --encrypted transfer_pack.zip
 omero transfer unpack --output /home/user/optional_folder --ln_s
 omero transfer unpack --folder /home/user/unpacked_folder/
 ```
