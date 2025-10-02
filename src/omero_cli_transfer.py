@@ -715,7 +715,7 @@ class TransferControl(GraphControl):
             if skip:
                 command.extend(['--skip', skip])
             if encrypted:
-                command.append('--encrypted true')
+                command.append(['--encrypted', 'true'])
             
             cli.invoke(command)
             img_ids = self._get_image_ids(dest_path, gateway)
