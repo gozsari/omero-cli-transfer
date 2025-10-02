@@ -117,6 +117,9 @@ links, annotations and ROIs.
 --ln_s forces imports to use the transfer=ln_s option, in-place importing
 files. Same restrictions of regular in-place imports apply.
 
+--encrypted forces imports to use the encrypted=True option, importing images as encrypted.
+Same restrictions of regular encrypted imports apply.
+
 --output allows for specifying an optional output folder where the packet
 will be unzipped.
 
@@ -146,6 +149,7 @@ Examples:
 omero transfer unpack transfer_pack.zip
 omero transfer unpack --output /home/user/optional_folder --ln_s
 omero transfer unpack --folder /home/user/unpacked_folder/ --skip upgrade
+omero transfer unpack --encrypted pack.tar
 omero transfer unpack pack.tar --metadata db_id orig_user hostname
 """)
 
@@ -612,8 +616,11 @@ class TransferControl(GraphControl):
             ln_s = True
         else:
             ln_s = False
+        encrypted = True
+        if not args.encrypted:
+            encrypted = False
         dest_img_map = self._import_files(folder, filelist,
-                                          ln_s, args.skip, self.gateway)
+                                          ln_s, encrypted, args.skip, self.gateway)
         self._delete_all_rois(dest_img_map, self.gateway)
         logger.info("Matching source and destination images...")
         img_map = self._make_image_map(src_img_map, dest_img_map, self.gateway)
@@ -691,7 +698,7 @@ class TransferControl(GraphControl):
                               for x in img_map.keys()})
         return newome, img_map, filelist
 
-    def _import_files(self, folder: Path, filelist: List[str], ln_s: bool,
+    def _import_files(self, folder: Path, filelist: List[str], ln_s: bool, encrypted: bool,
                       skip: str, gateway: BlitzGateway) -> dict:
         cli = CLI()
         cli.loadplugins()
