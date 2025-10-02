@@ -1,0 +1,13 @@
+name: omero-transfer-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  # OMERO + Ice from conda (macOS arm64 supported via conda-forge)
+  - zeroc-ice=3.6.5
+  - omero-py>=5.19,<5.22
+  # Core runtime
+  - pandas>=2.2,<2.3
+  - pip:
+      - git+https://github.com/gozsari/omero-cli-transfer.git

@@ -1,7 +1,11 @@
 # omero-cli-transfer
+## How to use this package
+### Prepare the environment
 
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7573591.svg)](https://doi.org/10.5281/zenodo.7573591)
+```
+conda env create -f environment.yml
+conda activate omero-transfer-env
+```
 
 
 An OMERO CLI plugin for creating and using transfer packets between OMERO servers.
