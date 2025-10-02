@@ -704,6 +704,9 @@ class TransferControl(GraphControl):
                 command.append('--transfer=ln_s')
             if skip:
                 command.extend(['--skip', skip])
+            if encrypted:
+                command.append('--encrypted=True')
+            
             cli.invoke(command)
             img_ids = self._get_image_ids(dest_path, gateway)
             dest_map[dest_path] = img_ids
