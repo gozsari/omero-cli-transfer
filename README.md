@@ -1,12 +1,4 @@
 # omero-cli-transfer
-## How to use this package
-### Prepare the environment
-
-```
-conda env create -f environment.yml
-conda activate omero-transfer-env
-```
-
 
 An OMERO CLI plugin for creating and using transfer packets between OMERO servers.
 
@@ -24,9 +16,8 @@ this package relies heavily on it, and it is not feasible without it.
 
 With conda installed, you can do
 ```
-conda create -n myenv -c conda-forge python=3.9 zeroc-ice=3.6.5
-conda activate myenv
-pip install omero-cli-transfer
+conda env create -f environment.yml
+conda activate omero-transfer-env
 ```
 It is possible to do the same thing without `conda` as long as your python/pip version is at least 3.9,
 but that will require either installing a prebuilt wheel for `zeroc-ice` (Glencoe Software provides them [here](https://github.com/glencoesoftware/zeroc-ice-py-linux-x86_64/releases) or locally building a wheel for `zeroc-ice` (which pip does automatically) - the latter is a
@@ -98,6 +89,8 @@ Note that unpack needs to be able to identify the images it imports inequivocall
 
 `--ln_s` forces imports to use the transfer=ln_s option, in-place importing files. Same restrictions of regular in-place imports apply.
 
+`--encrypted` forces imports to use the encrypted=True option, importing images as encrypted.
+Same restrictions of regular encrypted imports apply.
 `--output` allows for specifying an optional output folder where the packet will be unzipped.
 
 `--folder` allows the user to point to a previously-unpacked folder rather than a single file.
