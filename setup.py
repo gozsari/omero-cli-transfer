@@ -8,5 +8,5 @@ import setuptools
 import os
 
 setuptools.setup(
-    version=os.environ.get('VERSION', '0.0.1'),
+    version=os.environ.get('VERSION', '0.0.2'),
 )
